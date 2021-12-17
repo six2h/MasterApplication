@@ -13,11 +13,13 @@ public class MasterController {
         RestTemplate restTemplate = new RestTemplate();
         // LocalHost should be changed to ec2 instance Public IPV4 DNS Eg:http://ec2-3-83-177-8.compute-1.amazonaws.com:8081/get
         String fooResourceUrl
-                = "http://localhost:8081/get";
+                = "http://ec2-3-83-177-8.compute-1.amazonaws.com:8081/get";
         ResponseEntity<String> response
                 = restTemplate.getForEntity(fooResourceUrl, String.class);
         ObjectMapper mapper = new ObjectMapper();
         ResourceData resourceData = mapper.readValue(response.getBody(), ResourceData.class);
-        System.out.println("preethi" + resourceData.AvailableMemory);
+        if(Integer.parseInt(resourceData.performance.getIpAddressCount()) > 200){
+            System.out.println("DDos Attack has Happened");
+        }
     }
 }

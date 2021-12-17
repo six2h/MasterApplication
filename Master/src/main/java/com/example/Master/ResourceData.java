@@ -5,12 +5,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ResourceData {
-    @JsonProperty("TCP Connections")
-    Object TcpConnections;
-    @JsonProperty("Total Memory")
-    Object TotalMemory;
-    @JsonProperty("Available Memory")
-    Object AvailableMemory;
-    @JsonProperty("Processor Info")
-    Object ProcessorInfo;
+    @JsonProperty("Performance")
+    Performance performance;
+    @JsonProperty("Agility")
+    Agility agility;
+    @JsonProperty("Security")
+    Security security;
 }
